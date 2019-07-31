@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/*
+/* 三数之和
 给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。
 
 注意：答案中不可以包含重复的三元组。
@@ -15,9 +15,9 @@ import java.util.List;
   [-1, -1, 2]
 ]
 
- */
+*/
 
-/*
+/* 思路：
 数组遍历:
 首先对数组进行排序，排序后固定一个数nums[i]，再使用左右指针指向nums[i]后面的两端，数字分别为nums[L]和nums[R]，计算三个数的和sum
 判断是否满足为 0，满足则添加进结果集
@@ -29,7 +29,7 @@ import java.util.List;
 
 时间复杂度：O(n^2)
 
- */
+*/
 public class LeetCode15 {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
