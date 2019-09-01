@@ -33,7 +33,7 @@ public class LeetCode46 {
         for (int i = 0; i < nums.length; i++) {
             if (!isVisited[i]) {
                 path.add(nums[i]);
-                isVisited[i] = true;  // 选了一个元素，我们就得“标记一下”，“表示占位”。
+                isVisited[i] = true;  // 选了一个元素，我们就得“标记一下”，表示占位。
                 backTrace(nums, isVisited, cur + 1, path, result);
                 /* 在程序执行到上面这棵树的叶子结点的时候，此时递归到底，当前根结点到叶子结点走过的路径就构成一个全排列，把它加入结果集，我把这一步称之为“结算”。
                 此时递归方法要返回了，对于方法返回以后，要做两件事情：
@@ -46,7 +46,7 @@ public class LeetCode46 {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3, 4};
+        int[] nums = new int[]{1, 2, 3};
         LeetCode46 l = new LeetCode46();
         List<List<Integer>> permute = l.permute(nums);
         for (int i = 0; i < permute.size(); i++) {
