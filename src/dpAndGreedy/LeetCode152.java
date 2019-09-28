@@ -1,4 +1,4 @@
-package dynamicprogramming;
+package dpAndGreedy;
 /* 乘积最大子序列
 给定一个整数数组 nums ，找出一个序列中乘积最大的连续子序列（该序列至少包含一个数）。
  */
@@ -16,5 +16,6 @@ public class LeetCode152 {
             }
             imax = Math.max(imax * num, num);
         }
+        return imax;
     }
 }
