@@ -11,7 +11,7 @@ package binarysearch;
 public class LeetCode35 {
     public int searchInsert(int[] nums, int target) {
         // 第一种写法
-        /*int left = 0;
+        int left = 0;
         int right = nums.length - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
@@ -24,10 +24,10 @@ public class LeetCode35 {
             }
 
         }
-        return left;*/
+        return left;
 
         // 第二种写法
-        int left = 0;
+        /*int left = 0;
         int right = nums.length;
         while (left < right) {
             int mid = left + (right - left) / 2;
@@ -39,7 +39,7 @@ public class LeetCode35 {
                 right = mid;
             }
         }
-        return left;
+        return left;*/
     }
 
     public static void main(String[] args) {
