@@ -14,7 +14,7 @@ package dpAndGreedy.knapsacks;
  */
 public class LeetCode518 {
     public int change(int amount, int[] coins) {
-        /*int n = coins.length;
+        int n = coins.length;
         int[][] dp = new int[n + 1][amount + 1];    // dp[i][j] 使用前i个硬币，背包容量为j时，有dp[i][j]种方法装满背包
         for (int i = 0; i < n + 1; i++) {
             dp[i][0] = 1;
@@ -29,9 +29,9 @@ public class LeetCode518 {
                 }
             }
         }
-        return dp[n][amount];*/
+        return dp[n][amount];
 
-        // dp 数组的转移只和 dp[i][..] 和 dp[i-1][..] 有关，所以可以压缩成一维数组
+        /*// dp 数组的转移只和 dp[i][..] 和 dp[i-1][..] 有关，所以可以压缩成一维数组
         int n = coins.length;
         int[] dp = new int[amount + 1];
         dp[0] = 1; // base case
@@ -39,6 +39,6 @@ public class LeetCode518 {
             for (int j = 1; j <= amount; j++)
                 if (j - coins[i] >= 0)
                     dp[j] = dp[j] + dp[j - coins[i]];
-        return dp[amount];
+        return dp[amount];*/
     }
 }
