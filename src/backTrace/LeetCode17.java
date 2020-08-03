@@ -37,11 +37,12 @@ public class LeetCode17 {
 
     private List<String> result = new ArrayList<>();
 
+
     public List<String> letterCombinations(String digits) {
         if (digits.length() == 0) {
             return result;
         }
-        backTrack(digits, 0, "");
+        backTrack(digits, 0, /*""*/ new StringBuilder());
         return result;
     }
 
@@ -50,19 +51,21 @@ public class LeetCode17 {
      *
      * @param digits 输入的字符
      * @param index  当前字符遍历的位置
-     * @param s      产生好的一个组合
+     * @param sb     产生好的一个组合
      */
-    private void backTrack(String digits, int index, String s) {
+    private void backTrack(String digits, int index, /*String s*/ StringBuilder sb) {
         if (index == digits.length()) {
             // 若遍历到最后一个字符，则加入结果集
-            result.add(s);
+            result.add(sb.toString());
             return;
         }
         // 获取当前的数字对应的英文
         String letters = map.get(digits.charAt(index));
         for (int i = 0; i < letters.length(); i++) {
             // 循环对每一个字母进行遍历
-            backTrack(digits, index + 1, s + letters.charAt(i));
+//            backTrack(digits, index + 1, s + letters.charAt(i));    // 产生一个新的字符串对象，不需要回退
+            backTrack(digits, index + 1, sb.append(letters.charAt(i)));
+            sb.deleteCharAt(sb.length() - 1);    // 回溯
         }
     }
 

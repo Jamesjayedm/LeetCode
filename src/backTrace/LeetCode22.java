@@ -20,6 +20,7 @@ package backTrace;
 再用剪枝函数来对解空间树进行剪枝
 类似题目都可用回溯法。
 
+https://leetcode-cn.com/problems/generate-parentheses/solution/hui-su-suan-fa-by-liweiwei1419/
  */
 
 import java.util.ArrayList;
@@ -27,24 +28,46 @@ import java.util.List;
 
 public class LeetCode22 {
 
+    // 做减法
+
     public List<String> generateParenthesis(int n) {
-        List<String> result = new ArrayList<>();
-        parenthesisBackTrace(result, n, n, "");
-        return result;
+        List<String> res = new ArrayList<>();
+        // 特判
+        if (n == 0) {
+            return res;
+        }
+
+        // 执行深度优先遍历，搜索可能的结果
+        dfs("", n, n, res);
+        return res;
     }
 
-    public void parenthesisBackTrace(List<String> result, int left, int right, String temp) {
-        // 判断是否"("个数小于")" 且"("或")"大于0，如果不是，则返回上一层
-        if (left > right || left < 0 || right < 0)
-            return;
+    /**
+     * @param curStr 当前递归得到的结果
+     * @param left   左括号还有几个可以使用
+     * @param right  右括号还有几个可以使用
+     * @param res    结果集
+     */
+    private void dfs(String curStr, int left, int right, List<String> res) {
+        // 因为每一次尝试，都使用新的字符串变量，所以无需回溯
+        // 在递归终止的时候，直接把它添加到结果集即可，注意与「力扣」第 46 题、第 39 题区分
         if (left == 0 && right == 0) {
-            result.add(temp);
+            res.add(curStr);
             return;
         }
-        // 分别遍历左右子树
-        parenthesisBackTrace(result, left - 1, right, temp + "(");
-        parenthesisBackTrace(result, left, right - 1, temp + ")");
 
+        // 剪枝（如图，左括号可以使用的个数严格大于右括号可以使用的个数，才剪枝，注意这个细节）
+        if (left > right) {
+            return;
+        }
+
+        if (left > 0) {
+            dfs(curStr + "(", left - 1, right, res);    // 产生了一个新对象，所以无需回溯
+        }
+
+        if (right > 0) {
+            dfs(curStr + ")", left, right - 1, res);
+        }
     }
 
     public static void main(String[] args) {
